@@ -31,12 +31,7 @@
     self.urlTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
 }
 
-//- (void)loadRequestFromString:(NSString *)urlString;
-//{
-//    NSURL *url = [NSURL URLWithString:urlString];
-//    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
-//    [self.webView loadRequest:urlRequest];
-//}
+
 #pragma mark - UIWEBVIEW DELEGATES
 - (void)webViewDidStartLoad:(UIWebView *)webView
 {
@@ -69,13 +64,11 @@
     [self.activityIndicator hidesWhenStopped];
     [self.activityIndicator stopAnimating];
   
-  
-
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
-    
+    NSLog(@"No internet connection");
 }
 
 #pragma mark - UITEXTFIELD DELEGATES
@@ -128,7 +121,12 @@
 
 - (IBAction)plusButton:(UIButton *)sender
 {
-    [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Coming Soon!", @"Please fill in all fields") message:NSLocalizedString(@"", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"OK") otherButtonTitles:nil] show];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Coming soon"
+                                                    message:@""
+                                                   delegate:self
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
 }
 
 @end
