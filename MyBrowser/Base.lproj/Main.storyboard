@@ -30,16 +30,69 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Md5-g5-Z2y">
                                 <rect key="frame" x="0.0" y="513" width="320" height="55"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zwM-Z4-mWQ">
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zwM-Z4-mWQ">
                                         <rect key="frame" x="32" y="13" width="30" height="30"/>
                                         <state key="normal" title="&lt;">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="backButton:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="3Iq-Ia-VHs"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fuA-dS-vGa">
+                                        <rect key="frame" x="70" y="13" width="30" height="30"/>
+                                        <state key="normal" title="&gt;">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="forwardButton:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Ldl-AH-d5g"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gA8-8s-Pej">
+                                        <rect key="frame" x="221" y="13" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="BFy-Ow-pYB"/>
+                                            <constraint firstAttribute="height" constant="30" id="Vel-k4-7Go"/>
+                                        </constraints>
+                                        <state key="normal" title="R">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="refreshButton:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="nfB-iu-9Ix"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dm3-zO-EZo">
+                                        <rect key="frame" x="108" y="13" width="30" height="30"/>
+                                        <state key="normal" title="+">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="plusButton:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="XL0-ib-mLK"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="27n-Bw-q4i">
+                                        <rect key="frame" x="259" y="13" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="JPq-6u-qPT"/>
+                                            <constraint firstAttribute="width" constant="30" id="vxj-yl-34K"/>
+                                        </constraints>
+                                        <state key="normal" title="X">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="stopButton:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Zrw-u9-QSP"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
+                                    <constraint firstItem="27n-Bw-q4i" firstAttribute="leading" secondItem="gA8-8s-Pej" secondAttribute="trailing" constant="8" id="ENE-cP-qNH"/>
+                                    <constraint firstItem="27n-Bw-q4i" firstAttribute="top" secondItem="Md5-g5-Z2y" secondAttribute="top" constant="13" id="M2d-Ji-0Vi"/>
+                                    <constraint firstItem="27n-Bw-q4i" firstAttribute="leading" secondItem="gA8-8s-Pej" secondAttribute="trailing" constant="8" id="MM6-W6-ZUN"/>
+                                    <constraint firstAttribute="trailing" secondItem="27n-Bw-q4i" secondAttribute="trailing" constant="31" id="a45-xD-Yxr"/>
+                                    <constraint firstAttribute="centerY" secondItem="27n-Bw-q4i" secondAttribute="centerY" id="hRT-46-Kip"/>
                                     <constraint firstAttribute="height" constant="55" id="jRV-n4-c7l"/>
+                                    <constraint firstAttribute="centerY" secondItem="gA8-8s-Pej" secondAttribute="centerY" id="rai-sJ-DHp"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -60,7 +113,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="5HH-lm-VYP">
                         <nil key="title"/>
-                        <textField key="titleView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="mqr-Ri-jgG">
+                        <textField key="titleView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="http://" minimumFontSize="17" id="mqr-Ri-jgG">
                             <rect key="frame" x="8" y="7" width="304" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -69,6 +122,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="activityIndicator" destination="KMP-PX-efJ" id="t4e-5R-1LQ"/>
+                        <outlet property="goBack" destination="zwM-Z4-mWQ" id="2af-6h-HdE"/>
+                        <outlet property="goForward" destination="fuA-dS-vGa" id="2Fc-MS-bq4"/>
                         <outlet property="urlTextField" destination="mqr-Ri-jgG" id="XpQ-4w-WnU"/>
                         <outlet property="webView" destination="Oak-qo-aLV" id="54M-TU-eTF"/>
                     </connections>
