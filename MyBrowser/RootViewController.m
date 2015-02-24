@@ -8,12 +8,14 @@
 
 #import "RootViewController.h"
 
-@interface RootViewController () <UIWebViewDelegate, UITextFieldDelegate>
+@interface RootViewController () <UIWebViewDelegate, UITextFieldDelegate, UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property (weak, nonatomic) IBOutlet UITextField *urlTextField;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (weak, nonatomic) IBOutlet UIButton *goBack;
 @property (weak, nonatomic) IBOutlet UIButton *goForward;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property CGPoint pointNow;
 
 @end
 
@@ -29,6 +31,8 @@
     self.urlTextField.text = @"http://";
     
     self.urlTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
+    
+    self.webView.scrollView.delegate = self;
 }
 
 
@@ -63,6 +67,8 @@
 {
     [self.activityIndicator hidesWhenStopped];
     [self.activityIndicator stopAnimating];
+    
+    self.titleLabel.text = [self.webView stringByEvaluatingJavaScriptFromString:@"document.title"];
   
 }
 
@@ -82,8 +88,12 @@
 }
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
-
+    self.urlTextField.alpha = 1.0;
     return YES;
+}
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    self.urlTextField.alpha = 1.0;
 }
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
@@ -94,6 +104,21 @@
     }
     
     return YES;
+}
+
+#pragma mark - UISCROLLVIEW DELEGATE
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    if (scrollView.contentOffset.y<self.pointNow.y)
+    {
+        NSLog(@"up");
+        self.urlTextField.alpha = 1.0;
+    }
+    else if (scrollView.contentOffset.y>self.pointNow.y)
+    {
+        NSLog(@"down");
+        self.urlTextField.alpha = 0.5;
+    }
 }
 
 #pragma mark - UIBUTTONS
